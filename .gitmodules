@@ -1,0 +1,3 @@
+[submodule "creator-token-standards"]
+	path = creator-token-standards
+	url = git@github.com:limitbreakinc/creator-token-standards.git

@@ -1,0 +1,32 @@
+{
+  "name": "@limitbreak/creator-token-standards",
+  "version": "2.0.0",
+  "description": "A backwards compatible library of NFT contract standards and mix-ins that power programmable royalty use cases and expand possible NFT use cases by introducing creator tokens.",
+  "main": "index.js",
+  "files": [
+    "/**/*.sol",
+    "/build/contracts/*.json",
+    "!/test",
+    "!/src/examples",
+    "!/script"
+  ],
+  "scripts": {
+    "compile": "hardhat compile",
+    "clean": "hardhat clean && rimraf artifacts build contracts/build cache *.tgz",
+    "prepack": "npm run clean && npm run compile && node scripts/prepack.js"
+  },
+  "author": "Limit Break, Inc.",
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "4.0.0",
+    "hardhat": "2.19.5"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "4.8.3",
+    "erc721a": "4.2.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/limitbreakinc/creator-token-standards.git"
+  }
+}

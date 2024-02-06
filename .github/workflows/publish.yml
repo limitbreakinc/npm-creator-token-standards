@@ -1,0 +1,62 @@
+name: Release NPM Package to npmjs.com
+
+on:
+    workflow_dispatch:
+      inputs:
+        tag:
+          description: 'Tag name to push'
+          required: true
+          default: 'v2.0.0'
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+      packages: write
+
+
+    steps:
+    - name: Checkout Source Repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        fetch-tags: 'true'
+        submodules: 'true'
+
+    - name: Squash & Push Code to Public Repo
+      run: |
+        git switch "${{ github.event.inputs.tag }}" --detach
+
+    - name: Use Node.js 20.11.0
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.11.0'
+        registry-url: 'https://registry.npmjs.com'
+
+    #- name: Copy Hardhat Scaffold
+    #  run: |
+    #    mkdir ./creator-token-standards/scripts
+    #    cp ./build.package.json ./creator-token-standards/package.json
+    #    cp ./package-lock.json ./creator-token-standards/package-lock.json
+    #    cp ./build.hardhat.config.js ./creator-token-standards/hardhat.config.js
+    #    cp ./scripts/prepack.js ./creator-token-standards/scripts/prepack.js
+    #    cd ./creator-token-standards
+    #    npm ci
+
+    #- run: ./prepare-build.sh
+
+    - name: Publish to npm
+      run: |
+        mkdir ./creator-token-standards/scripts
+        cp ./build.package.json ./creator-token-standards/package.json
+        cp ./package-lock.json ./creator-token-standards/package-lock.json
+        cp ./build.hardhat.config.js ./creator-token-standards/hardhat.config.js
+        cp ./scripts/prepack.js ./creator-token-standards/scripts/prepack.js
+        cd ./creator-token-standards
+        npm ci
+        npm publish --access public
+      env:
+        NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
+        NPM_CONFIG_PROVENANCE: true
