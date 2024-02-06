@@ -14,8 +14,6 @@ jobs:
     permissions:
       contents: read
       id-token: write
-      packages: write
-
 
     steps:
     - name: Checkout Source Repository
@@ -35,26 +33,14 @@ jobs:
         node-version: '20.11.0'
         registry-url: 'https://registry.npmjs.com'
 
-    #- name: Copy Hardhat Scaffold
-    #  run: |
-    #    mkdir ./creator-token-standards/scripts
-    #    cp ./build.package.json ./creator-token-standards/package.json
-    #    cp ./package-lock.json ./creator-token-standards/package-lock.json
-    #    cp ./build.hardhat.config.js ./creator-token-standards/hardhat.config.js
-    #    cp ./scripts/prepack.js ./creator-token-standards/scripts/prepack.js
-    #    cd ./creator-token-standards
-    #    npm ci
-
-    #- run: ./prepare-build.sh
-
     - name: Publish to npm
       run: |
-        mkdir ./creator-token-standards/scripts
-        cp ./build.package.json ./creator-token-standards/package.json
-        cp ./package-lock.json ./creator-token-standards/package-lock.json
-        cp ./build.hardhat.config.js ./creator-token-standards/hardhat.config.js
-        cp ./scripts/prepack.js ./creator-token-standards/scripts/prepack.js
-        cd ./creator-token-standards
+        cd creator-token-standards/
+        mkdir scripts/
+        cp ../build.package.json ./package.json
+        cp ../package-lock.json ./package-lock.json
+        cp ../build.hardhat.config.js ./hardhat.config.js
+        cp ../scripts/prepack.js ./scripts/prepack.js
         npm ci
         npm publish --access public
       env:
