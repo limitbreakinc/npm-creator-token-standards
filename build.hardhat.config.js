@@ -7,7 +7,8 @@ subtask(TASK_COMPILE_SOLIDITY_GET_SOURCE_PATHS)
   .setAction(async (_, __, runSuper) => {
     const paths = await runSuper();
     const excludeTests = paths.filter(p => !p.endsWith(".t.sol"));
-    const excludeExamples = excludeTests.filter(p => !p.includes("src/examples/"));
+    const excludeScripts = excludeTests.filter(p => !p.endsWith(".s.sol"));
+    const excludeExamples = excludeScripts.filter(p => !p.includes("src/examples/"));
 
     return excludeExamples;
   });
@@ -15,11 +16,11 @@ subtask(TASK_COMPILE_SOLIDITY_GET_SOURCE_PATHS)
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
   solidity: {
-    version: "0.8.19",
+    version: "0.8.24",
     settings: {
       optimizer: {
         enabled: true,
-        runs: 1000000
+        runs: 777
       }
     }
   },
