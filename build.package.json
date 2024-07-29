@@ -1,6 +1,6 @@
 {
   "name": "@limitbreak/creator-token-standards",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "description": "A backwards compatible library of NFT contract standards and mix-ins that power programmable royalty use cases and expand possible NFT use cases by introducing creator tokens.",
   "main": "index.js",
   "files": [
@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.8.3",
+    "@limitbreak/permit-c": "1.0.0",
     "erc721a": "4.2.3"
   },
   "repository": {
