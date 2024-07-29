@@ -9,8 +9,9 @@ subtask(TASK_COMPILE_SOLIDITY_GET_SOURCE_PATHS)
     const excludeTests = paths.filter(p => !p.endsWith(".t.sol"));
     const excludeScripts = excludeTests.filter(p => !p.endsWith(".s.sol"));
     const excludeExamples = excludeScripts.filter(p => !p.includes("creator-token-standards/src/examples/"));
+    const excludeSpecificFile = excludeExamples.filter(p => !p.includes("src/utils/CreatorTokenTransferValidator.sol"));
 
-    return excludeExamples;
+    return excludeSpecificFile;
   });
 
 /** @type import('hardhat/config').HardhatUserConfig */

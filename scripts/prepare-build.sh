@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 mkdir ./creator-token-standards/scripts
+rm ./creator-token-standards/remappings.txt
+cp ./remappings.txt ./creator-token-standards/remappings.txt
 cp ./build.package.json ./creator-token-standards/package.json
 cp ./package-lock.json ./creator-token-standards/package-lock.json
 cp ./build.hardhat.config.js ./creator-token-standards/hardhat.config.js
