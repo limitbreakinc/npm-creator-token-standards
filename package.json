@@ -1,6 +1,6 @@
 {
   "name": "@limitbreak/creator-token-standards",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "A backwards compatible library of NFT contract standards and mix-ins that power programmable royalty use cases and expand possible NFT use cases by introducing creator tokens.",
   "main": "index.js",
   "files": [
